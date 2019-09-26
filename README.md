@@ -33,6 +33,8 @@ https://drive.google.com/file/d/1DqeZPhZA1J9QFQXE2cPsCB_0em52aYai/view?usp=shari
 Others:
 https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing
 
+UNS model:
+
 ## Optional requirements
 **HMMER** v3.1b1
 
@@ -45,7 +47,7 @@ usage:
 DeepTE.py [-h] required: [-d working_dir][-o output_dir]
                          [-i ipt_seq][-m model_dir]
                          [-sp sp_type][-fam te_fam]
-               optional: [-modify domain_file]
+               optional: [-modify domain_file][-UNS yes]
 
 arguments:
 -h, --help        Show this help message and exit.
@@ -58,7 +60,7 @@ arguments:
 
 -i                Input sequences that are unknown TEs or DNA sequences.
 
--m                Provide model_dir that could be downloaded from website.
+-m                Provide model_dir that could be downloaded from website. If users set -UNS yes, please provide UNS_model.h5 that can be downlowed in the above link. 
 
 -sp               P or M or F or O. P:Plants, M:Metazoans, F:Fungi, and O: Others.
 
@@ -73,8 +75,9 @@ arguments:
                   SINE: the input sequence is SINE TEs
                   Domain: the input sequence is Class II TEs with specified super families
 
--modify           If set this argument, users need to provide domain file generated from another script: DeepTE_domain.py
+-modify           If set this argument, users need to provide domain file generated from another script: DeepTE_domain.py.
 
+-UNS              If set this argument, users need change the -i to the the DNA sequences; This function will classify the sequences into TEs, CDS, or Intergenic sequences; -sp and -fam do not need to provide.
 
 **DeepTE_domain**
 DeepTE_domain.py [-h] required: [-d working_dir][-o output_dir]
@@ -123,7 +126,8 @@ DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fa
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam SINE
 - [ ] Classify TEs into MITEs and nMITEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam Domain  
-
+- [ ] Classify Unknown sequences into TEs, Coding sequences, or Intergenic sequences  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -UNS yes  
 
 **DeepTE_domain.py**  
 **Input data**  
