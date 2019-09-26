@@ -1,8 +1,3 @@
----
-title: 'DeepTE'
-disqus: hackmd
----
-
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
