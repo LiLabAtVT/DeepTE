@@ -1,3 +1,8 @@
+---
+title: 'DeepTE'
+disqus: hackmd
+---
+
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -99,16 +104,34 @@ arguments:
 ```
 
 # Examples
-DeepTE.py  
+**DeepTE.py**  
 **Input data**  
 Sequence data (fasta format)  
-**Command**  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassI  
 **Output data**  
 a. name list (first column: original name; second column: predicted name with DeepTE)  
 b. fasta file with new predicted TE name  
 
-DeepTE_domain.py  
+
+- [ ] Classify unknown TEs  
+**Command**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P  
+- [ ] Classify Class I TEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassI
+- [ ] Classify Class II TEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassII
+- [ ] Classify LTR TEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam LTR
+- [ ] Classify nLTR TEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam nLTR
+- [ ] Classify LINE TEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam LINE
+- [ ] Classify SINE TEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam SINE
+- [ ] Classify TEs into MITEs and nMITEs  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam Domain  
+
+
+**DeepTE_domain.py**  
 **Input data**  
 Sequence data (fasta format)  
 **Command**  
@@ -132,6 +155,5 @@ a. TE domain file. (first column: orignial name; second column: domain informati
 :::info
 **Find this document incomplete?** Leave a comment!
 :::
-
 
 
