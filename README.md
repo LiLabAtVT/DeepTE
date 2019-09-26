@@ -1,3 +1,8 @@
+---
+title: 'DeepTE'
+disqus: hackmd
+---
+
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -106,9 +111,8 @@ Sequence data (fasta format)
 a. name list (first column: original name; second column: predicted name with DeepTE)  
 b. fasta file with new predicted TE name  
 
-
+**Command**
 - [ ] Classify unknown TEs  
-**Command**  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P  
 - [ ] Classify Class I TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassI
