@@ -1,0 +1,4 @@
+biopython
+keras
+numpy
+itertools
