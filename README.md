@@ -22,18 +22,19 @@ Modules can be installed using pip: pip install -r requirements.txt or pip insta
 Download the model dir from link
 
 Plants:
-https://drive.google.com/file/d/1E6ZPGjlFcszJjthJtKO3KOMh05xYzq_L/view?usp=sharing
+https://drive.google.com/file/d/1dQf1zUdqK-Gb9EorpPPoLtr_67hpiOUo/view?usp=sharing
 
 Metazoans:
-https://drive.google.com/file/d/18qCmKnGjZykoDMnKeDHWpKmuaOb_hjUg/view?usp=sharing
+https://drive.google.com/file/d/1M3eP_OtonxptHoeNgipA9cRkTaYGX1Yh/view?usp=sharing
 
 Fungi:
-https://drive.google.com/file/d/1DqeZPhZA1J9QFQXE2cPsCB_0em52aYai/view?usp=sharing
+https://drive.google.com/file/d/1wk1N636mXjY8On3YVl3u7LC1uGTcTB-K/view?usp=sharing
 
 Others:
 https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing
 
 UNS model:
+https://drive.google.com/file/d/17JswzJkTakF4mpr1MObyTp0CNxXodNZK/view?usp=sharing
 
 ## Optional requirements
 **HMMER** v3.1b1
@@ -143,9 +144,9 @@ a. TE domain file. (first column: orignial name; second column: domain informati
 
 
 # Work flows
-![](https://i.imgur.com/eqINPxf.png)
+![](https://i.imgur.com/Uig4pJJ.png)
 
-**Figure** A pipeline for classifying unknown TEs based on trained models. The unknown TEs go through eight models to be classified into different families. Two correction steps are conducted during classification. In Class model, TR domain exists in predicted Class I TEs that will be corrected to Class II TEs, while RT domain exists in predicted Class II TEs that will be corrected to Class I TEs. In ClassI model, EN domain exists in predicted LTR TEs will be correct to nLTR TEs.
+**Figure** A pipeline for classifying unknown TEs and sequences based on trained nine models. The unknown TEs go through eight models to be classified into different families. Two correction steps are conducted during classification. In Class model, TR domain exists in predicted Class I TEs that will be corrected to Class II TEs, while RT domain exists in predicted Class II TEs that will be corrected to Class I TEs. In ClassI model, EN domain exists in predicted LTR TEs will be correct to nLTR TEs. The unknown sequences go through UNS model to be classified into TEs, coding sequences (CDS), and intergenic sequences (INS).
 
 
 ## Appendix and FAQ
