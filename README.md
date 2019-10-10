@@ -116,11 +116,11 @@ arguments:
 Sequence data (fasta format)  
 
 **Output data**  
-Working directory
+Working directory  
 a. opt_input_CNN_data.txt (input data that is transfered from user provided input data)  
 b. store_temp_opt_dir (a directory contains prediction results for each TE group)
 
-Output directory
+Output directory  
 a. opt_DeepTE.txt (a txt file with two columns. first column: original name; second column: predicted name with DeepTE)  
 b. opt_DeepTE.fasta (a fasta file with new predicted TE name)  
 
