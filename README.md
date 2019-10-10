@@ -18,6 +18,14 @@ For information about installing the dependencies, please see below. The version
 ## Requirements
 **Python** (v3.7 or more)
 Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]
+**Module version**  
+biopython (1.72)
+keras (2.2.4)
+tensorflow (1.14.0)
+numpy (1.16.0)
+
+
+
 **Model_dir**
 Download the model dir from link
 
@@ -106,9 +114,15 @@ arguments:
 **DeepTE.py**  
 **Input data**  
 Sequence data (fasta format)  
+
 **Output data**  
-a. name list (first column: original name; second column: predicted name with DeepTE)  
-b. fasta file with new predicted TE name  
+Working directory
+a. opt_input_CNN_data.txt (input data that is transfered from user provided input data)
+b. store_temp_opt_dir (a directory contains prediction results for each TE group)
+
+Output directory
+a. opt_DeepTE.txt (a txt file with two columns. first column: original name; second column: predicted name with DeepTE)
+b. opt_DeepTE.fasta (a fasta file with new predicted TE name)  
 
 **Command**
 - [ ] Classify unknown TEs  
