@@ -67,7 +67,7 @@ arguments:
 -o                Output directory to store the output files. 
                   Default: ./.
 
--i                Input sequences that are unknown TEs or DNA sequences.
+-i                Input sequences that are unknown TE or DNA sequences.
 
 -m                Provide model_dir that could be downloaded from website. If users set -UNS yes, please provide UNS_model.h5 that can be downlowed in the above link. 
 
@@ -101,7 +101,7 @@ arguments:
 -o                Output directory to store the output files. 
                   Default: ./.
 
--i                Input sequences that are unknown TEs or DNA sequences.
+-i                Input sequences that are unknown TE sequences.
 
 -s                Provide supplementary dir that contains required files.
 
