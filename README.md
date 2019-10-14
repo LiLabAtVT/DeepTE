@@ -16,18 +16,18 @@ Before running this pipeline, a dependency check should be performed first to ma
 For information about installing the dependencies, please see below. The version numbers listed below represents the version this pipeline is developed with, and using the newest version is recommended.
 
 ## Requirements
-**Python** (v3.7 or more)
-Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]
+**Python** (v3.7 or more)  
+Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]  
 **Module version**  
-biopython (1.72)
-keras (2.2.4)
-tensorflow (1.14.0)
-numpy (1.16.0)
+biopython (1.72)  
+keras (2.2.4)  
+tensorflow (1.14.0)  
+numpy (1.16.0)  
 
 
 
-**Model_dir**
-Download the model dir from link
+**Model_dir**  
+Download the model dir from link  
 
 Plants:
 https://drive.google.com/file/d/1dQf1zUdqK-Gb9EorpPPoLtr_67hpiOUo/view?usp=sharing
