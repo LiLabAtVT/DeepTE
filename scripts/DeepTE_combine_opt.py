@@ -140,7 +140,7 @@ def generate_fasta_UNS (input_fasta_file,input_opt_DeepTE_dir,input_opt_combine_
         new_seq_dic[new_nm] = orignial_seq_dic[eachid]
 
     ##write out fasta file
-    with open(input_opt_combine_DeepTE_dir + '/opt_DeeTE.fasta', 'w+') as opt:
+    with open(input_opt_combine_DeepTE_dir + '/opt_DeepTE.fasta', 'w+') as opt:
         for eachid in new_seq_dic:
             opt.write('>' + eachid + '\n' + new_seq_dic[eachid] + '\n')
 
