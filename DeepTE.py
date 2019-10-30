@@ -147,7 +147,7 @@ def main(argv=None):
             print('Step2: 1) domain information is exist')
             domain_file = args.domain_file
             te_domain_pattern_dic = pipeline_yes_m.store_domain_pattern_infor(domain_file)
-            pipeline_yes_m.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir, sp_type,te_domain_pattern_dic)
+            pipeline_yes_m.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir, sp_type,te_domain_pattern_dic,te_fam)
 
         ##If users do not call domain argument
         else:
