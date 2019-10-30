@@ -707,7 +707,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         if x_classII_ipt_test_list != []:
 
             x_domain_right_list, y_domain_right_nm_list, store_all_results_dic, predicted_classes_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list, input_spe_type)
+                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list, input_spe_type,te_domain_pattern_dic)
 
             with open (input_store_predict_dir + '/' + model_name + '_results.txt','w+') as opt:
                 for eachid in store_all_results_dic:
