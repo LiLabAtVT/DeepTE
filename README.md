@@ -1,4 +1,5 @@
 
+
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -87,7 +88,9 @@ arguments:
 
 -modify           If set this argument, users need to provide domain file generated from another script: DeepTE_domain.py.
 
--UNS              If set this argument, users need change the -i to the the DNA sequences; This function will classify the sequences into TEs, CDS, or Intergenic sequences; -sp and -fam do not need to provide.
+-UNS              If set this argument, users need change the -i to the the DNA sequences; 
+                  This function will classify the sequences into TEs, CDS, or Intergenic sequences; -sp and -fam do not need to provide.
+                  Note: this model is used for plants rather than metazoans and fungi.
 
 **DeepTE_domain**
 DeepTE_domain.py [-h] required: [-d working_dir][-o output_dir]
