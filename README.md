@@ -1,3 +1,4 @@
+
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -77,12 +78,12 @@ arguments:
                   Default: All
                   All: the input squence is unknown TEs
                   ClassI: the input sequence is ClassI TEs
-                  ClassII: the input sequence is ClassII TEs
+                  ClassII: the input sequence is ClassII subclass1 TEs
                   LTR: the input sequence is LTR TEs
                   nLTR: the input sequence is nLTR TEs
                   LINE: the input sequence is LINE TEs
                   SINE: the input sequence is SINE TEs
-                  Domain: the input sequence is Class II TEs with specified super families
+                  Domain: the input sequence is Class II subclass1 TEs with specified super families
 
 -modify           If set this argument, users need to provide domain file generated from another script: DeepTE_domain.py.
 
@@ -129,7 +130,7 @@ b. opt_DeepTE.fasta (a fasta file with new predicted TE name)
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P  
 - [ ] Classify Class I TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassI
-- [ ] Classify Class II TEs  
+- [ ] Classify Class II subclass1 TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassII
 - [ ] Classify LTR TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam LTR
@@ -158,9 +159,10 @@ a. TE domain file. (first column: orignial name; second column: domain informati
 
 
 # Work flows
-![](https://i.imgur.com/Uig4pJJ.png)
+![](https://i.imgur.com/RlCZblM.png)
 
-**Figure** A pipeline for classifying unknown TEs and sequences based on trained nine models. The unknown TEs go through eight models to be classified into different families. Two correction steps are conducted during classification. In Class model, TR domain exists in predicted Class I TEs that will be corrected to Class II TEs, while RT domain exists in predicted Class II TEs that will be corrected to Class I TEs. In ClassI model, EN domain exists in predicted LTR TEs will be correct to nLTR TEs. The unknown sequences go through UNS model to be classified into TEs, coding sequences (CDS), and intergenic sequences (INS).
+
+**Figure** A pipeline for classifying unknown TEs and sequences based on trained nine models. The unknown TEs go through eight models to be classified into different families. Two correction steps are conducted during classification. In Class model, TR domain exists in predicted Class I TEs that will be corrected to Class II_sub1 TEs, while RT domain exists in predicted Class II_sub1 TEs that will be corrected to Class I TEs. In ClassI model, EN domain exists in predicted LTR TEs will be correct to nLTR TEs. The unknown sequences go through UNS model to be classified into TEs, coding sequences (CDS), and intergenic sequences (INS).
 
 
 ## Appendix and FAQ
