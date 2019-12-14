@@ -1,4 +1,7 @@
-
+---
+title: 'DeepTE'
+disqus: hackmd
+---
 
 DeepTE
 ===
@@ -26,39 +29,31 @@ keras (2.2.4)
 tensorflow (1.14.0)  
 numpy (1.16.0)  
 
-
-
-**Model_dir**  
-Download the model dir from link  
-
-Plants:
-https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing
-
-Metazoans:
-https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing
-
-Fungi:
-https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing
-
-Others:
-https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing
-
-UNS model:
-https://drive.google.com/file/d/17JswzJkTakF4mpr1MObyTp0CNxXodNZK/view?usp=sharing
-
 ## Optional requirements
 **HMMER** v3.1b1
 
-
+**Model_dir**  
+Download the model dir from link  
+Plants:
+https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing
+Metazoans:
+https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing
+Fungi:
+https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing
+Others:
+https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing
+UNS model:
+https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing
 
 # Usage
 ```
 usage:
 **DeepTE**
 DeepTE.py [-h] required: [-d working_dir][-o output_dir]
-                         [-i ipt_seq][-m model_dir]
-                         [-sp sp_type][-fam te_fam]
-               optional: [-modify domain_file][-UNS yes]
+                         [-i ipt_seq][-sp sp_type]
+                         ([-m model_name]|[-m_dir model_dir])
+               optional: [-modify domain_file]
+                         [-fam te_fam][-UNS yes]
 
 arguments:
 -h, --help        Show this help message and exit.
@@ -71,9 +66,16 @@ arguments:
 
 -i                Input sequences that are unknown TE or DNA sequences.
 
--m                Provide model_dir that could be downloaded from website. If users set -UNS yes, please provide UNS_model.h5 that can be downlowed in the above link. 
-
 -sp               P or M or F or O. P:Plants, M:Metazoans, F:Fungi, and O: Others.
+
+-m                Provide one of model names: 
+                  '-m P' or '-m M' or '-m F' or '-m O' or '-m U'.
+                  This argument will directly download the model dir.
+                  Users do not need to initiate '-m_dir'.
+                  If users do not want to directly download model, please use '-m_dir', but users need to download model directory by themselves.
+
+-m_dir            Provide model_dir that could be downloaded from website (optional requirements). 
+                  If users set -UNS yes, please provide UNS_model directory that can be downlowed in the above link.
 
 -fam              Provide TE family name for the input te sequence
                   Default: All
@@ -123,6 +125,7 @@ Sequence data (fasta format)
 Working directory  
 a. opt_input_CNN_data.txt (input data that is transfered from user provided input data)  
 b. store_temp_opt_dir (a directory contains prediction results for each TE group)
+c. download_X_model_dir (store downloaded models. X represents P, M, F, O, or U)
 
 Output directory  
 a. opt_DeepTE.txt (a txt file with two columns. first column: original name; second column: predicted name with DeepTE)  
@@ -130,23 +133,23 @@ b. opt_DeepTE.fasta (a fasta file with new predicted TE name)
 
 **Command**
 - [ ] Classify unknown TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P  
 - [ ] Classify Class I TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassI
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassI
 - [ ] Classify Class II subclass1 TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam ClassII
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassII
 - [ ] Classify LTR TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam LTR
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LTR
 - [ ] Classify nLTR TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam nLTR
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam nLTR
 - [ ] Classify LINE TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam LINE
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LINE
 - [ ] Classify SINE TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam SINE
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam SINE
 - [ ] Classify TEs into MITEs and nMITEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -sp P -fam Domain  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam Domain  
 - [ ] Classify Unknown sequences into TEs, Coding sequences, or Intergenic sequences  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m model_dir -UNS yes  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m U -UNS yes  
 
 **DeepTE_domain.py**  
 **Input data**  
