@@ -178,7 +178,7 @@ def main(argv=None):
 
             if model_name == 'U':
                 ##create a dir in the working_dir to store the model dir
-                google_drive_path = '17JswzJkTakF4mpr1MObyTp0CNxXodNZK'
+                google_drive_path = '1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr'
                 download_model_dir = download_model(working_dir, model_name, google_drive_path)
 
     ##if users do not notify the model_name instead they want to use downloaded model they need provide model_dir
