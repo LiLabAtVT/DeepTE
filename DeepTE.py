@@ -151,7 +151,7 @@ def main(argv=None):
     download_model_dir = ''
     if args.model_name is not None:
         model_name = args.model_name
-        if model_name != 'P' and model_name != 'M' and model_name != 'F' and model_name != 'O':
+        if model_name != 'P' and model_name != 'M' and model_name != 'F' and model_name != 'O' and model_name != 'U':
             print("Please use one of 'P', 'M', 'F', 'O' to be model name")
             return
         else:
