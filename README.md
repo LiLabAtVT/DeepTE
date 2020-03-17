@@ -18,7 +18,7 @@ Before running this pipeline, a dependency check should be performed first to ma
 For information about installing the dependencies, please see below. The version numbers listed below represents the version this pipeline is developed with, and using the newest version is recommended.
 
 ## Requirements
-**Python** (v3.7 or more)  
+**Python** (v3.6 or more)  
 Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]  
 **Module version**  
 biopython (1.72)  
