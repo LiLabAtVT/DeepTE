@@ -158,7 +158,7 @@ def main(argv=None):
             ##download P model
             if model_name == 'P':
                 ##create a dir in the working_dir to store the model dir
-                google_drive_path = '1voj86STKcQH8lAhvY6yl5E65nzaM6o0B'
+                google_drive_path = '1hHkW5P_3UgdhCDHOTgDSVrrssziFl0BC'
                 download_model_dir = download_model(working_dir, model_name, google_drive_path)
 
             if model_name == 'M':
