@@ -32,7 +32,7 @@ numpy (1.16.0)
 **Model_dir**  
 Download the model dir from link  
 Plants:  
-https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing  
+https://drive.google.com/file/d/1hHkW5P_3UgdhCDHOTgDSVrrssziFl0BC/view?usp=sharing  
 Metazoans:  
 https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing  
 Fungi:  
