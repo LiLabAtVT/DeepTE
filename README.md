@@ -1,4 +1,5 @@
 
+
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -83,8 +84,6 @@ arguments:
                   If users set -UNS yes, please provide UNS_model directory that can be downlowed in the above link.
 
 -fam              Provide TE family name for the input te sequence
-                  Default: All
-                  All: the input squence is unknown TEs
                   ClassI: the input sequence is ClassI TEs
                   ClassII: the input sequence is ClassII subclass1 TEs
                   LTR: the input sequence is LTR TEs
@@ -92,6 +91,7 @@ arguments:
                   LINE: the input sequence is LINE TEs
                   SINE: the input sequence is SINE TEs
                   Domain: the input sequence is Class II subclass1 TEs with specified super families
+                  If users do not initiate '-fam', DeepTE will regard your input sequences are unknown TEs.
 
 -modify           If set this argument, users need to provide domain file generated from another script: DeepTE_domain.py.
 
