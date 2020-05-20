@@ -1,5 +1,4 @@
 
-
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -18,7 +17,16 @@ Before running this pipeline, a dependency check should be performed first to ma
 For information about installing the dependencies, please see below. The version numbers listed below represents the version this pipeline is developed with, and using the newest version is recommended.
 
 ## Requirements
-**Python** (v3.6 or more)  
+### Use conda to install required packages (Recommend)
+Install **conda**: https://www.anaconda.com/products/individual  
+conda create -n py36 python=3.6  
+conda activate py36  
+conda install tensorflow-gpu=1.14.0  
+conda install biopython  
+conda install keras=2.2.4  
+conda install numpy=1.16.0  
+### Use pip to install required packages
+**Python** (v3.7 or more)  
 Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]  
 **Module version**  
 biopython (1.72)  
@@ -32,7 +40,7 @@ numpy (1.16.0)
 **Model_dir**  
 Download the model dir from link  
 Plants:  
-https://drive.google.com/file/d/1hHkW5P_3UgdhCDHOTgDSVrrssziFl0BC/view?usp=sharing  
+https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing  
 Metazoans:  
 https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing  
 Fungi:  
@@ -131,22 +139,48 @@ b. opt_DeepTE.fasta (a fasta file with new predicted TE name)
 **Command**
 - [ ] Classify unknown TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P  
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/
+
 - [ ] Classify Class I TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassI
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassI  
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam ClassI
+
 - [ ] Classify Class II subclass1 TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassII
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassII  
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam ClassII  
+
 - [ ] Classify LTR TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LTR
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam LTR
+
 - [ ] Classify nLTR TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam nLTR
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam nLTR
+
 - [ ] Classify LINE TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LINE
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam LINE
+
 - [ ] Classify SINE TEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam SINE
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam SINE
+
 - [ ] Classify TEs into MITEs and nMITEs  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam Domain  
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam Domain  
+
 - [ ] Classify Unknown sequences into TEs, Coding sequences, or Intergenic sequences  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m U -UNS yes  
+**Or**  
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -m_dir UNS_model/ -UNS yes  
 
 **DeepTE_domain.py**  
 **Input data**  
