@@ -153,22 +153,22 @@ DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam ClassI
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam ClassII  
 
 - [ ] Classify LTR TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LTR
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LTR  
 **Or**  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam LTR
 
 - [ ] Classify nLTR TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam nLTR
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam nLTR  
 **Or**  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam nLTR
 
 - [ ] Classify LINE TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LINE
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam LINE  
 **Or**  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam LINE
 
 - [ ] Classify SINE TEs  
-DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam SINE
+DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m P -fam SINE  
 **Or**  
 DeepTE.py -d working_dir -o output_dir -i input_seq.fasta -sp P -m_dir Plants_model/ -fam SINE
 
