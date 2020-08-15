@@ -181,7 +181,7 @@ def generate_name_number_dic (model_nm,input_spe_type):
     return (name_number_dic)
 
 
-def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type):
+def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type,y_all_test_nm_list):
 
     ##x_test_list: eg. ['TT','AA','CC']
     ##y_test_nm_list contains the name information
@@ -209,11 +209,6 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type):
     ##X_test is the input data for the prediction of the model
     X_test = generate_input_data_without_load_data(x_test_list)  ##different model_nm generates different class code
 
-
-    #print('the name_number_dic is ')
-    #print(name_number_dic)
-
-
     ##change X_test vector
     X_test = X_test.reshape(X_test.shape[0], 1, 16384, 1)  ##kmer == 3 so it would be 64
     X_test = X_test.astype('float64')
@@ -221,8 +216,8 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type):
 
     ####################################
     ##step 2: generate the predict class
-    predicted_classes = model.predict(X_test)
-    predicted_classes = np.argmax(np.round(predicted_classes), axis=1)
+    Y_pred_keras = model.predict(X_test)
+    predicted_classes = np.argmax(np.round(Y_pred_keras), axis=1)
 
     #######################################################################################
     ##step 3: extract rigth predicted order that will be used for the next prediction round
@@ -237,7 +232,24 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type):
         y_new_nm_list.append(y_test_nm_list[i])
         store_results_dic[str(i)] = str(y_test_nm_list[i])  + '\t' + name_number_dic[model_nm][str(predicted_classes_list[i])]
 
-    return (x_new_list,y_new_nm_list,store_results_dic,predicted_classes_list)
+
+    ########################################################
+    ##step 4: generate probability for prediction of each TE
+    ##load the TE name
+    store_prob_line_list = []
+    first_line = 'TE_name'
+    for i in range(len(list(name_number_dic[model_nm].keys()))):
+        first_line = first_line + '\t' + name_number_dic[model_nm][str(i)]
+    store_prob_line_list.append(first_line)
+
+    for i in range(Y_pred_keras.shape[0]):
+        prob_line = y_all_test_nm_list[i]
+        for j in range(len(list(name_number_dic[model_nm].keys()))):
+            prob_line = prob_line + '\t' + str(Y_pred_keras[i, j])
+        store_prob_line_list.append(prob_line)
+
+
+    return (x_new_list,y_new_nm_list,store_results_dic,predicted_classes_list,store_prob_line_list)
 
 
 
@@ -288,8 +300,13 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
     ######################
     ##detect TE in the All
     model_name = 'All'
-    x_all_right_list, y_all_right_nm_list, store_all_results_dic,predicted_classes_list = \
-        predict_te(model_file_dic[model_name], model_name, x_all_test_list, y_all_test_nm_list,input_spe_type)
+    x_all_right_list, y_all_right_nm_list, store_all_results_dic,predicted_classes_list,store_prob_line_list = \
+        predict_te(model_file_dic[model_name], model_name, x_all_test_list, y_all_test_nm_list,input_spe_type,y_all_test_nm_list)
+
+    ##updation 081520
+    with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+        for eachline in store_prob_line_list:
+            opt.write(eachline + '\n')
 
     ##y_all_right_list = [0,1,2,2,1,0,1]  has three items
     #print('the y_all_right_list len is ')
@@ -345,8 +362,8 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         ##updation
         if x_classI_ipt_test_list != []:
 
-            x_classI_right_list, y_classI_right_nm_list, store_classI_results_dic,predicted_classes_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classI_ipt_test_list, y_classI_ipt_test_nm_list,input_spe_type)
+            x_classI_right_list, y_classI_right_nm_list, store_classI_results_dic,predicted_classes_list,store_prob_line_list = \
+                predict_te(model_file_dic[model_name], model_name, x_classI_ipt_test_list, y_classI_ipt_test_nm_list,input_spe_type,y_classI_ipt_test_nm_list)
 
             for i in range(len(predicted_classes_list)):
                 if predicted_classes_list[i] == 0:
@@ -362,6 +379,12 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
                 for eachid in store_classI_results_dic:
                     #store_all_information_dic[new_id_name] = store_classI_results_dic[eachid]
                     opt.write(store_classI_results_dic[eachid] + '\n')
+
+            ##udpation 081520
+            with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                for eachline in store_prob_line_list:
+                    opt.write(eachline + '\n')
+
 
 
     ##################
@@ -379,14 +402,19 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         ##updation
         if x_LTR_ipt_test_list != []:
 
-            x_LTR_right_list, y_LTR_right_nm_list, store_LTR_results_dic,predicted_classes_list = \
-                predict_te(model_file_dic[model_name], model_name, x_LTR_ipt_test_list, y_LTR_ipt_test_nm_list,input_spe_type)
+            x_LTR_right_list, y_LTR_right_nm_list, store_LTR_results_dic,predicted_classes_list,store_prob_line_list = \
+                predict_te(model_file_dic[model_name], model_name, x_LTR_ipt_test_list, y_LTR_ipt_test_nm_list,input_spe_type,y_LTR_ipt_test_nm_list)
 
             ##write right results
             with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
                 for eachid in store_LTR_results_dic:
                     #store_all_information_dic[new_id_name] = store_LTR_results_dic[eachid]
                     opt.write(store_LTR_results_dic[eachid] + '\n')
+
+            ##udpation 081520
+            with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                for eachline in store_prob_line_list:
+                    opt.write(eachline + '\n')
 
 
     ####################
@@ -404,8 +432,8 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         ##updation
         if x_nLTR_ipt_test_list != []:
 
-            x_nLTR_right_list, y_nLTR_right_nm_list, store_nLTR_results_dic,predicted_classes_list = \
-                predict_te(model_file_dic[model_name], model_name, x_nLTR_ipt_test_list, y_nLTR_ipt_test_nm_list,input_spe_type)
+            x_nLTR_right_list, y_nLTR_right_nm_list, store_nLTR_results_dic,predicted_classes_list,store_prob_line_list = \
+                predict_te(model_file_dic[model_name], model_name, x_nLTR_ipt_test_list, y_nLTR_ipt_test_nm_list,input_spe_type,y_nLTR_ipt_test_nm_list)
 
             for i in range(len(predicted_classes_list)):
                 if predicted_classes_list[i] == 0:
@@ -441,6 +469,10 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
                         #store_all_information_dic[new_id_name] = store_helitron_results_dic[eachid]
                         opt.write(store_PLE_results_dic[eachid] + '\n')
 
+            ##udpation 081520
+            with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                for eachline in store_prob_line_list:
+                    opt.write(eachline + '\n')
 
 
     ###################
@@ -460,14 +492,19 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
             ##updation
             if x_LINE_ipt_test_list != []:
 
-                x_LINE_right_list, y_LINE_right_nm_list, store_LINE_results_dic,predicted_classes_list = \
-                    predict_te(model_file_dic[model_name], model_name, x_LINE_ipt_test_list, y_LINE_ipt_test_nm_list,input_spe_type)
+                x_LINE_right_list, y_LINE_right_nm_list, store_LINE_results_dic,predicted_classes_list,store_prob_line_list = \
+                    predict_te(model_file_dic[model_name], model_name, x_LINE_ipt_test_list, y_LINE_ipt_test_nm_list,input_spe_type,y_LINE_ipt_test_nm_list)
 
                 ##write right results
                 with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
                     for eachid in store_LINE_results_dic:
                         #store_all_information_dic[new_id_name] = store_LTR_results_dic[eachid]
                         opt.write(store_LINE_results_dic[eachid] + '\n')
+
+                ##udpation 081520
+                with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                    for eachline in store_prob_line_list:
+                        opt.write(eachline + '\n')
 
         ###################
         ##detect TE in LINE
@@ -484,14 +521,20 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
             ##updation
             if x_SINE_ipt_test_list != []:
 
-                x_SINE_right_list, y_SINE_right_nm_list, store_SINE_results_dic,predicted_classes_list = \
-                    predict_te(model_file_dic[model_name], model_name, x_SINE_ipt_test_list, y_SINE_ipt_test_nm_list,input_spe_type)
+                x_SINE_right_list, y_SINE_right_nm_list, store_SINE_results_dic,predicted_classes_list,store_prob_line_list = \
+                    predict_te(model_file_dic[model_name], model_name, x_SINE_ipt_test_list, y_SINE_ipt_test_nm_list,input_spe_type,y_SINE_ipt_test_nm_list)
 
                 ##write right results
                 with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
                     for eachid in store_SINE_results_dic:
                         #store_all_information_dic[new_id_name] = store_LTR_results_dic[eachid]
                         opt.write(store_SINE_results_dic[eachid] + '\n')
+
+                ##udpation 081520
+                with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                    for eachline in store_prob_line_list:
+                        opt.write(eachline + '\n')
+
 
     ###########################
     ##detect TE in the class II
@@ -508,8 +551,8 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         ##updation
         if x_classII_ipt_test_list != []:
 
-            x_classII_right_list, y_classII_right_nm_list, store_classII_results_dic,predicted_classes_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list,input_spe_type)
+            x_classII_right_list, y_classII_right_nm_list, store_classII_results_dic,predicted_classes_list,store_prob_line_list = \
+                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list,input_spe_type,y_classII_ipt_test_nm_list)
 
 
             ##write out wrong results
@@ -517,6 +560,12 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
                 for eachid in store_classII_results_dic:
                     #store_all_information_dic[new_id_name] = store_DNA_results_dic[eachid]
                     opt.write(store_classII_results_dic[eachid] + '\n')
+
+            ##udpation 081520
+            with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                for eachline in store_prob_line_list:
+                    opt.write(eachline + '\n')
+
 
 
     #########################
@@ -536,14 +585,17 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         ##updation
         if x_classII_ipt_test_list != []:
 
-            x_domain_right_list, y_domain_right_nm_list, store_all_results_dic, predicted_classes_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list, input_spe_type)
+            x_domain_right_list, y_domain_right_nm_list, store_all_results_dic, predicted_classes_list,store_prob_line_list = \
+                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list, input_spe_type,y_classII_ipt_test_nm_list)
 
             with open (input_store_predict_dir + '/' + model_name + '_results.txt','w+') as opt:
                 for eachid in store_all_results_dic:
                     opt.write(store_all_results_dic[eachid] + '\n')
 
-
+            ##udpation 081520
+            with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+                for eachline in store_prob_line_list:
+                    opt.write(eachline + '\n')
 
 
 

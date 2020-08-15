@@ -51,7 +51,7 @@ def generate_name_number_dic (model_nm):
     return (name_number_dic)
 
 
-def predict_te (model,model_nm,x_test_list,y_test_nm_list):
+def predict_te (model,model_nm,x_test_list,y_test_nm_list,y_all_test_nm_list):
 
     ##x_test_list: eg. ['TT','AA','CC']
     ##y_test_nm_list contains the name information
@@ -91,8 +91,8 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list):
 
     ####################################
     ##step 2: generate the predict class
-    predicted_classes = model.predict(X_test)
-    predicted_classes = np.argmax(np.round(predicted_classes), axis=1)
+    Y_pred_keras = model.predict(X_test)
+    predicted_classes = np.argmax(np.round(Y_pred_keras), axis=1)
 
     #######################################################################################
     ##step 3: extract rigth predicted order that will be used for the next prediction round
@@ -107,7 +107,23 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list):
         y_new_nm_list.append(y_test_nm_list[i])
         store_results_dic[str(i)] = str(y_test_nm_list[i])  + '\t' + name_number_dic[model_nm][str(predicted_classes_list[i])]
 
-    return (x_new_list,y_new_nm_list,store_results_dic,predicted_classes_list)
+    ########################################################
+    ##step 4: generate probability for prediction of each TE
+    ##load the TE name
+    store_prob_line_list = []
+    first_line = 'TE_name'
+    for i in range(len(list(name_number_dic[model_nm].keys()))):
+        first_line = first_line + '\t' + name_number_dic[model_nm][str(i)]
+    store_prob_line_list.append(first_line)
+
+    for i in range(Y_pred_keras.shape[0]):
+        prob_line = y_all_test_nm_list[i]
+        for j in range(len(list(name_number_dic[model_nm].keys()))):
+            prob_line = prob_line + '\t' + str(Y_pred_keras[i, j])
+        store_prob_line_list.append(prob_line)
+
+
+    return (x_new_list,y_new_nm_list,store_results_dic,predicted_classes_list,store_prob_line_list)
 
 
 
@@ -136,8 +152,8 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir):
     ######################
     ##detect TE in the All
     model_name = 'UNS'
-    x_all_right_list, y_all_right_nm_list, store_all_results_dic,predicted_classes_list = \
-        predict_te(model_file_dic[model_name], model_name, x_all_test_list, y_all_test_nm_list)
+    x_all_right_list, y_all_right_nm_list, store_all_results_dic,predicted_classes_list,store_prob_line_list = \
+        predict_te(model_file_dic[model_name], model_name, x_all_test_list, y_all_test_nm_list,y_all_test_nm_list)
 
     with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
         for eachid in store_all_results_dic:
@@ -145,6 +161,10 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir):
             opt.write(store_all_results_dic[eachid] + '\n')
 
 
+    ##udpation 081520
+    with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
+        for eachline in store_prob_line_list:
+            opt.write(eachline + '\n')
 
 
 
