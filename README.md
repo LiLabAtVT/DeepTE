@@ -121,6 +121,10 @@ arguments:
 
 ```
 
+# Updation
+**08/15/2020**  
+In the 'store_temp_opt_dir' of the working_dir, we add information about probability of each family the input TE belongs to.   
+
 # Examples
 **DeepTE.py**  
 **Input data**  
@@ -129,7 +133,7 @@ Sequence data (fasta format)
 **Output data**  
 Working directory  
 a. opt_input_CNN_data.txt (input data that is transfered from user provided input data)  
-b. store_temp_opt_dir (a directory contains prediction results for each TE group)
+b. store_temp_opt_dir (a directory contains prediction results for each TE group; b this directory also contains probability of each family the input TE belongs to)
 c. download_X_model_dir (store downloaded models. X represents P, M, F, O, or U)
 
 Output directory  
