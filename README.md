@@ -39,7 +39,15 @@ numpy (1.16.0)
 **HMMER** v3.1b1
 
 **Model_dir**  
-Download the model dir from link  
+Download the model dir from cyVerse link  
+Plants:  
+https://de.cyverse.org/dl/d/89D2FE7A-41BA-4F64-80E2-B9C26D49E99F/Plants_model.tar.gz  
+Metazoans:  
+https://de.cyverse.org/dl/d/441459EF-6DDD-41A5-A9AB-1D5D13049F18/Metazoans_model.tar.gz  
+Fungi:  
+https://de.cyverse.org/dl/d/8B112733-063A-4DE9-89EC-22A062D8807B/Fungi_model.tar.gz  
+
+Download the model dir from google link  
 Plants:  
 https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing  
 Metazoans:  
