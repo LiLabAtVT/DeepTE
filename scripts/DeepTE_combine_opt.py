@@ -110,7 +110,7 @@ def extract_combine_infor (input_opt_DeepTE_dir,input_opt_combine_DeepTE_dir,sp_
         subprocess.call(cmd,shell=True)
 
     ##if only domain exit
-    if len(opt_fl_list) == 1:
+    if len(opt_fl_list) == 3:
         if input_opt_DeepTE_dir + '/Domain_results.txt' in opt_fl_list:
             cmd = 'cp ' + opt_fl_list[0] + ' ' + input_opt_combine_DeepTE_dir + '/opt_DeepTE.txt'
             subprocess.call(cmd, shell=True)
