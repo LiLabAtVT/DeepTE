@@ -1,4 +1,5 @@
 
+
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
@@ -222,6 +223,8 @@ a. TE domain file. (first column: orignial name; second column: domain informati
 
 **Figure** A pipeline for classifying unknown TEs and sequences based on trained nine models. The unknown TEs go through eight models to be classified into different families. Two correction steps are conducted during classification. In Class model, TR domain exists in predicted Class I TEs that will be corrected to Class II_sub1 TEs, while RT domain exists in predicted Class II_sub1 TEs that will be corrected to Class I TEs. In ClassI model, EN domain exists in predicted LTR TEs will be correct to nLTR TEs. The unknown sequences go through UNS model to be classified into TEs, coding sequences (CDS), and intergenic sequences (INS).
 
+## Citation
+Haidong Yan, Aureliano Bombarely, Song Li 2020 DeepTE: a computational method for de novo classification of transposons with convolutional neural network. Bioinformatics, Volume 36, Issue 15, 1 August 2020, Pages 4269–4275.
 
 ## Appendix and FAQ
 
