@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+##updating 122520 add the prop threshold
 ##updation 12.14 add argument to download model automatically
 
 ##updation 9.26 distinguish the TE and no TE function
@@ -67,6 +68,10 @@ def get_parsed_args():
                                                         "This function will classify the sequences into TEs, CDS, or Intergenic sequences,"
                                                         "-sp and -fam do not need to provide" )
 
+    parser.add_argument('-prop_thr', dest='prop_thr', help='Specify a probability threshold that a TE is classified into one family.'
+                                                           'For example, a TE has probability of 0.6 to be ClassI.'
+                                                           'If users set 0.7 as the threshold, this TE will be labled as unknown.'
+                                                           'Default: 0.6')
 
     ##parse of parameters
     args = parser.parse_args()
@@ -130,6 +135,12 @@ def main(argv=None):
             print('Cannot find model dir, please provide the dir in \'-m_dir\' or the model name in \'-m\'!')
             return
 
+    ##updation 122520
+    ##set threshold
+    if args.prop_thr is not None:
+        prop_thr = args.prop_thr
+    else:
+        prop_thr = '0.6'
 
     ###########################################
     ##create the working and output directories
@@ -229,13 +240,13 @@ def main(argv=None):
             print('Step2: 1) domain information is exist')
             domain_file = args.domain_file
             te_domain_pattern_dic = pipeline_yes_m.store_domain_pattern_infor(domain_file)
-            pipeline_yes_m.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir, sp_type,te_domain_pattern_dic,te_fam)
+            pipeline_yes_m.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir, sp_type,te_domain_pattern_dic,te_fam,prop_thr)
 
         ##If users do not call domain argument
         else:
             print('Step2: 2) domain information is not exist')
             ##run the DeepTE_pipeline
-            pipeline_no_m.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir, sp_type,te_fam)
+            pipeline_no_m.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir, sp_type,te_fam,prop_thr)
 
         ##write out final results
         print('Step3: generate final output')
@@ -246,7 +257,7 @@ def main(argv=None):
 
     else:
         print('Step2: classify unknown sequences')
-        pipeline_uns.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir)
+        pipeline_uns.classify_pipeline(model_dir, input_CNN_data_file, temp_store_opt_dir,prop_thr)
         ##write out the name and fasta files
         combine_opt.generate_fasta_UNS(ipt_seq, temp_store_opt_dir, output_dir)
 
