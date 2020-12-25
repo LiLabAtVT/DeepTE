@@ -1,9 +1,14 @@
 
-
 DeepTE
 ===
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
 
+# Updating
+**12/25/2020**  
+Add a proability threshold to annotate TEs. For example, a TE has a probability (0.6) to be ClassI, If users set 0.7 as the threshold, this TE will be labeled as 'unknown', Default: 0.6.
+
+**08/15/2020**  
+In the 'store_temp_opt_dir' of the working_dir, we add information about probability of each family the input TE belongs to.   
 
 # Introduction
 Transposable elements (TEs) classification is an essential step decoding their roles in a genome. With reference genomes from non-model species available, it has begun to overstep efforts to annotate TEs, and more tools are needed to efficiently handle the emerged sequence information. We developed a novel tool, DeepTE, which classifies unknown TEs on basis of convolutional neural network. DeepTE utilized co-occurrence of k-mers towards TE sequences as input vector, and seven k-mer size was testified to be suitable for the classification. Eight models have been trained for different TE classification purposes. DeepTE applied domains from TEs to correct false classification. An additional model was also trained to distinguish between non-TEs and TEs targeting plant species. 
@@ -39,7 +44,7 @@ numpy (1.16.0)
 **HMMER** v3.1b1
 
 **Model_dir**  
-Download the model dir from cyVerse link  
+Download the model dir from the cyVerse link  
 Plants:  
 https://de.cyverse.org/dl/d/89D2FE7A-41BA-4F64-80E2-B9C26D49E99F/Plants_model.tar.gz  
 Metazoans:  
@@ -47,7 +52,7 @@ https://de.cyverse.org/dl/d/441459EF-6DDD-41A5-A9AB-1D5D13049F18/Metazoans_model
 Fungi:  
 https://de.cyverse.org/dl/d/8B112733-063A-4DE9-89EC-22A062D8807B/Fungi_model.tar.gz  
 
-Download the model dir from google link  
+Download the model dir from the google link  
 Plants:  
 https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing  
 Metazoans:  
@@ -67,7 +72,7 @@ DeepTE.py [-h] required: [-d working_dir][-o output_dir]
                          [-i ipt_seq][-sp sp_type]
                          ([-m model_name]|[-m_dir model_dir])
                optional: [-modify domain_file]
-                         [-fam te_fam][-UNS yes]
+                         [-fam te_fam][-UNS yes][-prop_thr value]
 
 arguments:
 -h, --help        Show this help message and exit.
@@ -107,6 +112,12 @@ arguments:
                   This function will classify the sequences into TEs, CDS, or Intergenic sequences; -sp and -fam do not need to provide.
                   Note: this model is used for plants rather than metazoans and fungi.
 
+-prop_thr         Specify a probability threshold to annotate TE.
+                  For example: a TE has a probability (0.6) to be ClassI.
+                  If users set 0.7 as the threshold, 
+                  this TE will be labeled as 'unknown', Default: 0.6.
+
+
 **DeepTE_domain**
 DeepTE_domain.py [-h] required: [-d working_dir][-o output_dir]
                                 [-i ipt_seq][-s supfile_dir]
@@ -129,9 +140,7 @@ arguments:
 
 ```
 
-# Updation
-**08/15/2020**  
-In the 'store_temp_opt_dir' of the working_dir, we add information about probability of each family the input TE belongs to.   
+
 
 # Examples
 **DeepTE.py**  
