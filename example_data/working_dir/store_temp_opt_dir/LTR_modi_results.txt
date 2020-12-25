@@ -16,7 +16,7 @@ ClassI_LTR_Copia_46	ClassI_LTR_Copia
 ClassI_LTR_Copia_47	ClassI_LTR_Copia
 ClassI_LTR_Copia_48	ClassI_LTR_Copia
 ClassI_LTR_Copia_49	ClassI_LTR_Copia
-ClassI_LTR_Copia_50	unknown
+ClassI_LTR_Copia_50	ClassI_LTR
 ClassI_LTR_Copia_51	ClassI_LTR_Copia
 ClassI_LTR_Copia_52	ClassI_LTR_Copia
 ClassI_LTR_Copia_53	ClassI_LTR_Copia
@@ -33,7 +33,7 @@ ClassI_LTR_Copia_64	ClassI_LTR_Copia
 ClassI_LTR_Copia_65	ClassI_LTR_Copia
 ClassI_LTR_Copia_66	ClassI_LTR_Copia
 ClassI_LTR_Copia_68	ClassI_LTR_Copia
-ClassI_LTR_Copia_70	unknown
+ClassI_LTR_Copia_70	ClassI_LTR
 ClassI_LTR_Copia_71	ClassI_LTR_Copia
 ClassI_LTR_Copia_72	ClassI_LTR_Copia
 ClassI_LTR_Copia_73	ClassI_LTR_Copia
@@ -100,7 +100,7 @@ ClassI_LTR_Copia_138	ClassI_LTR_Copia
 ClassI_LTR_Copia_139	ClassI_LTR_Copia
 ClassI_LTR_Copia_140	ClassI_LTR_Copia
 ClassI_LTR_Copia_141	ClassI_LTR_Copia
-ClassI_LTR_Copia_143	unknown
+ClassI_LTR_Copia_143	ClassI_LTR
 ClassI_LTR_Copia_146	ClassI_LTR_Copia
 ClassI_LTR_Copia_147	ClassI_LTR_Copia
 ClassI_LTR_Copia_148	ClassI_LTR_Copia
@@ -146,7 +146,7 @@ ClassI_LTR_Copia_193	ClassI_LTR_Copia
 ClassI_LTR_Copia_194	ClassI_LTR_Copia
 ClassI_LTR_Copia_196	ClassI_LTR_Copia
 ClassI_LTR_Copia_197	ClassI_LTR_Copia
-ClassI_LTR_Copia_198	unknown
+ClassI_LTR_Copia_198	ClassI_LTR
 ClassI_LTR_Copia_199	ClassI_LTR_Copia
 ClassI_LTR_Copia_200	ClassI_LTR_Copia
 ClassI_LTR_Copia_201	ClassI_LTR_Copia
@@ -174,7 +174,7 @@ ClassI_LTR_Copia_225	ClassI_LTR_Copia
 ClassI_LTR_Copia_226	ClassI_LTR_Copia
 ClassI_LTR_Copia_227	ClassI_LTR_Copia
 ClassI_LTR_Copia_228	ClassI_LTR_Copia
-ClassI_LTR_Copia_229	unknown
+ClassI_LTR_Copia_229	ClassI_LTR
 ClassI_LTR_Copia_230	ClassI_LTR_Copia
 ClassI_LTR_Copia_231	ClassI_LTR_Copia
 ClassI_LTR_Copia_232	ClassI_LTR_Copia
@@ -190,7 +190,7 @@ ClassI_LTR_Copia_241	ClassI_LTR_Copia
 ClassI_LTR_Copia_242	ClassI_LTR_Copia
 ClassI_LTR_Copia_243	ClassI_LTR_Copia
 ClassI_LTR_Copia_244	ClassI_LTR_Copia
-ClassI_LTR_Copia_245	unknown
+ClassI_LTR_Copia_245	ClassI_LTR
 ClassI_LTR_Copia_246	ClassI_LTR_Copia
 ClassI_LTR_Copia_247	ClassI_LTR_Copia
 ClassI_LTR_Copia_248	ClassI_LTR_Copia
@@ -229,7 +229,7 @@ ClassI_LTR_Copia_284	ClassI_LTR_Copia
 ClassI_LTR_Copia_285	ClassI_LTR_Copia
 ClassI_LTR_Copia_286	ClassI_LTR_Copia
 ClassI_LTR_Copia_287	ClassI_LTR_Copia
-ClassI_LTR_Copia_288	unknown
+ClassI_LTR_Copia_288	ClassI_LTR
 ClassI_LTR_Copia_289	ClassI_LTR_Gypsy
 ClassI_LTR_Copia_290	ClassI_LTR_Copia
 ClassI_LTR_Copia_294	ClassI_LTR_Copia
@@ -310,7 +310,7 @@ ClassI_LTR_Gypsy_385	ClassI_LTR_Gypsy
 ClassI_LTR_Gypsy_386	ClassI_LTR_Gypsy
 ClassI_LTR_Gypsy_389	ClassI_LTR_Gypsy
 ClassI_LTR_Gypsy_390	ClassI_LTR_Gypsy
-ClassI_LTR_Gypsy_391	unknown
+ClassI_LTR_Gypsy_391	ClassI_LTR
 ClassI_LTR_Gypsy_392	ClassI_LTR_Gypsy
 ClassI_LTR_Gypsy_394	ClassI_LTR_Gypsy
 ClassI_LTR_Gypsy_395	ClassI_LTR_Gypsy
