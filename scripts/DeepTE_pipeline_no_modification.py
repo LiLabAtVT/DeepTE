@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+##updation 122520 provide prop selection for the results
+
 ##this script is to wrap all the seven models
 ##this script will directly test all the input sequence
 ##do not classify the sequence into right and wrong
@@ -181,7 +183,7 @@ def generate_name_number_dic (model_nm,input_spe_type):
     return (name_number_dic)
 
 
-def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type,y_all_test_nm_list):
+def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type,y_all_test_nm_list,prop_thr):
 
     ##x_test_list: eg. ['TT','AA','CC']
     ##y_test_nm_list contains the name information
@@ -220,17 +222,48 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type,y_all_t
     predicted_classes = np.argmax(np.round(Y_pred_keras), axis=1)
 
     #######################################################################################
-    ##step 3: extract rigth predicted order that will be used for the next prediction round
+    ##step 3: extract right predicted order that will be used for the next prediction round
     predicted_classes_list = predicted_classes.tolist()
+    # y_test_list = Y_test.tolist()  ##y_test_list contains [0,1,2,1,2,3]
 
-    #y_test_list = Y_test.tolist()  ##y_test_list contains [0,1,2,1,2,3]
+    ##updation 122520 transfer the prop less than a threshold to be unknown for a class
+    max_value_predicted_classes = np.amax(Y_pred_keras, axis=1)
+    order = -1
+    ls_thr_order_list = []
+    for i in range(len(max_value_predicted_classes)):
+        order += 1
+        if max_value_predicted_classes[i] < float(prop_thr):
+            ls_thr_order_list.append(order)
+
+    new_predicted_classes_list = []
+    order = -1
+    for i in range(len(predicted_classes)):
+        order += 1
+        if order in ls_thr_order_list:
+            new_class = 'unknown'
+        else:
+            new_class = predicted_classes[i]
+        new_predicted_classes_list.append(new_class)
+
 
     name_number_dic = generate_name_number_dic(model_nm,input_spe_type)
 
-    for i in range(0, len(predicted_classes_list)):
+    ##updation 122520
+    for i in range(0, len(new_predicted_classes_list)):
         x_new_list.append(x_test_list[i])
         y_new_nm_list.append(y_test_nm_list[i])
-        store_results_dic[str(i)] = str(y_test_nm_list[i])  + '\t' + name_number_dic[model_nm][str(predicted_classes_list[i])]
+
+        predicted_class = new_predicted_classes_list[i]
+        if predicted_class != 'unknown':
+            store_results_dic[str(i)] = str(y_test_nm_list[i])  + '\t' + name_number_dic[model_nm][str(new_predicted_classes_list[i])]
+        else:
+            store_results_dic[str(i)] = str(y_test_nm_list[i]) + '\t' + 'unknown'
+
+
+    #for i in range(0, len(predicted_classes_list)):
+    #    x_new_list.append(x_test_list[i])
+    #    y_new_nm_list.append(y_test_nm_list[i])
+    #    store_results_dic[str(i)] = str(y_test_nm_list[i])  + '\t' + name_number_dic[model_nm][str(predicted_classes_list[i])]
 
 
     ########################################################
@@ -248,12 +281,14 @@ def predict_te (model,model_nm,x_test_list,y_test_nm_list,input_spe_type,y_all_t
             prob_line = prob_line + '\t' + str(Y_pred_keras[i, j])
         store_prob_line_list.append(prob_line)
 
+    ##updation 122520
+    ##replace the predicted_classes_list to the new_predicted_classes_list
+    return (x_new_list,y_new_nm_list,store_results_dic,new_predicted_classes_list,store_prob_line_list)
 
-    return (x_new_list,y_new_nm_list,store_results_dic,predicted_classes_list,store_prob_line_list)
 
 
 
-def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,input_spe_type,fam_nm):
+def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,input_spe_type,fam_nm,prop_thr):
 
     ##Note:
     #list_model_name = ['All','ClassI','LTR','noLTR','DNA','MITE','noMITE']
@@ -301,7 +336,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
     ##detect TE in the All
     model_name = 'All'
     x_all_right_list, y_all_right_nm_list, store_all_results_dic,predicted_classes_list,store_prob_line_list = \
-        predict_te(model_file_dic[model_name], model_name, x_all_test_list, y_all_test_nm_list,input_spe_type,y_all_test_nm_list)
+        predict_te(model_file_dic[model_name], model_name, x_all_test_list, y_all_test_nm_list,input_spe_type,y_all_test_nm_list,prop_thr)
 
     ##updation 081520
     with open(input_store_predict_dir + '/' + model_name + '_probability_results.txt', 'w+') as opt:
@@ -363,7 +398,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         if x_classI_ipt_test_list != []:
 
             x_classI_right_list, y_classI_right_nm_list, store_classI_results_dic,predicted_classes_list,store_prob_line_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classI_ipt_test_list, y_classI_ipt_test_nm_list,input_spe_type,y_classI_ipt_test_nm_list)
+                predict_te(model_file_dic[model_name], model_name, x_classI_ipt_test_list, y_classI_ipt_test_nm_list,input_spe_type,y_classI_ipt_test_nm_list,prop_thr)
 
             for i in range(len(predicted_classes_list)):
                 if predicted_classes_list[i] == 0:
@@ -403,7 +438,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         if x_LTR_ipt_test_list != []:
 
             x_LTR_right_list, y_LTR_right_nm_list, store_LTR_results_dic,predicted_classes_list,store_prob_line_list = \
-                predict_te(model_file_dic[model_name], model_name, x_LTR_ipt_test_list, y_LTR_ipt_test_nm_list,input_spe_type,y_LTR_ipt_test_nm_list)
+                predict_te(model_file_dic[model_name], model_name, x_LTR_ipt_test_list, y_LTR_ipt_test_nm_list,input_spe_type,y_LTR_ipt_test_nm_list,prop_thr)
 
             ##write right results
             with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
@@ -433,7 +468,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         if x_nLTR_ipt_test_list != []:
 
             x_nLTR_right_list, y_nLTR_right_nm_list, store_nLTR_results_dic,predicted_classes_list,store_prob_line_list = \
-                predict_te(model_file_dic[model_name], model_name, x_nLTR_ipt_test_list, y_nLTR_ipt_test_nm_list,input_spe_type,y_nLTR_ipt_test_nm_list)
+                predict_te(model_file_dic[model_name], model_name, x_nLTR_ipt_test_list, y_nLTR_ipt_test_nm_list,input_spe_type,y_nLTR_ipt_test_nm_list,prop_thr)
 
             for i in range(len(predicted_classes_list)):
                 if predicted_classes_list[i] == 0:
@@ -493,7 +528,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
             if x_LINE_ipt_test_list != []:
 
                 x_LINE_right_list, y_LINE_right_nm_list, store_LINE_results_dic,predicted_classes_list,store_prob_line_list = \
-                    predict_te(model_file_dic[model_name], model_name, x_LINE_ipt_test_list, y_LINE_ipt_test_nm_list,input_spe_type,y_LINE_ipt_test_nm_list)
+                    predict_te(model_file_dic[model_name], model_name, x_LINE_ipt_test_list, y_LINE_ipt_test_nm_list,input_spe_type,y_LINE_ipt_test_nm_list,prop_thr)
 
                 ##write right results
                 with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
@@ -522,7 +557,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
             if x_SINE_ipt_test_list != []:
 
                 x_SINE_right_list, y_SINE_right_nm_list, store_SINE_results_dic,predicted_classes_list,store_prob_line_list = \
-                    predict_te(model_file_dic[model_name], model_name, x_SINE_ipt_test_list, y_SINE_ipt_test_nm_list,input_spe_type,y_SINE_ipt_test_nm_list)
+                    predict_te(model_file_dic[model_name], model_name, x_SINE_ipt_test_list, y_SINE_ipt_test_nm_list,input_spe_type,y_SINE_ipt_test_nm_list,prop_thr)
 
                 ##write right results
                 with open(input_store_predict_dir + '/' + model_name + '_results.txt', 'w+') as opt:
@@ -552,7 +587,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         if x_classII_ipt_test_list != []:
 
             x_classII_right_list, y_classII_right_nm_list, store_classII_results_dic,predicted_classes_list,store_prob_line_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list,input_spe_type,y_classII_ipt_test_nm_list)
+                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list,input_spe_type,y_classII_ipt_test_nm_list,prop_thr)
 
 
             ##write out wrong results
@@ -586,7 +621,7 @@ def classify_pipeline (input_model_dir,input_dataset,input_store_predict_dir,inp
         if x_classII_ipt_test_list != []:
 
             x_domain_right_list, y_domain_right_nm_list, store_all_results_dic, predicted_classes_list,store_prob_line_list = \
-                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list, input_spe_type,y_classII_ipt_test_nm_list)
+                predict_te(model_file_dic[model_name], model_name, x_classII_ipt_test_list, y_classII_ipt_test_nm_list, input_spe_type,y_classII_ipt_test_nm_list,prop_thr)
 
             with open (input_store_predict_dir + '/' + model_name + '_results.txt','w+') as opt:
                 for eachid in store_all_results_dic:
