@@ -52,6 +52,10 @@ Metazoans:
 https://de.cyverse.org/dl/d/441459EF-6DDD-41A5-A9AB-1D5D13049F18/Metazoans_model.tar.gz  
 Fungi:  
 https://de.cyverse.org/dl/d/8B112733-063A-4DE9-89EC-22A062D8807B/Fungi_model.tar.gz  
+Others:
+https://de.cyverse.org/dl/d/34CF8ACB-0B1F-4210-8359-366A70539F01/Others_model.tar.gz  
+UNS models:
+https://de.cyverse.org/dl/d/3280369B-030A-4ADF-8B6F-EDD4EC21DC4A/UNS_model.tar.gz  
 
 Download the model dir from the google link  
 Plants:  
