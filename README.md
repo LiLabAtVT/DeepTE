@@ -33,7 +33,7 @@ conda install biopython
 conda install keras=2.2.4  
 conda install numpy=1.16.0  
 ### Use pip to install required packages
-**Python** (v3.7 or more)  
+**Python** (v3.6 or more)  
 Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]  
 **Module version**  
 biopython (1.72)  
