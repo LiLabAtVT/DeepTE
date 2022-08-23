@@ -5,8 +5,11 @@ DeepTE
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
 
 # Updating
+**08/22/2022**  
+Add a training example dir that helps users to do the training based on their own datasets.  
+
 **12/25/2020**  
-Add a proability threshold to annotate TEs. For example, a TE has a probability (0.6) to be ClassI, If users set 0.7 as the threshold, this TE will be labeled as 'unknown', Default: 0.6.
+Add a proability threshold to annotate TEs. For example, a TE has a probability (0.6) to be ClassI, If users set 0.7 as the threshold, this TE will be labeled as 'unknown', Default: 0.6.  
 
 **08/15/2020**  
 In the 'store_temp_opt_dir' of the working_dir, we add information about probability of each family the input TE belongs to.   
@@ -32,6 +35,8 @@ conda install tensorflow-gpu=1.14.0
 conda install biopython  
 conda install keras=2.2.4  
 conda install numpy=1.16.0  
+pip install sklearn
+
 ### Use pip to install required packages
 **Python** (v3.6 or more)  
 Modules can be installed using pip: pip install -r requirements.txt or pip install [module_name]  
@@ -40,6 +45,7 @@ biopython (1.72)
 keras (2.2.4)  
 tensorflow (1.14.0)  
 numpy (1.16.0)  
+sklearn (0.24.2) (It is used for the training example)  
 
 ## Optional requirements
 **HMMER** v3.1b1
@@ -147,8 +153,9 @@ arguments:
 
 
 
-# Examples
+# Examples (Predicting)
 **DeepTE.py**  
+
 **Input data**  
 Sequence data (fasta format)  
 
@@ -216,6 +223,19 @@ DeepTE_domain.py -d working_dir -o output_dir -i input_seq.fasta -s supfile_dir 
 **Output data**  
 a. TE domain file. (first column: orignial name; second column: domain information for different open reading frames)
 
+
+# Examples (Training)
+Please set the training_example_dir as the current directory
+**Input data**  
+ipt_shuffle_All_CNN_data.txt (TEname,sequence_information)  
+input_store_class_report_dir (output directory)  
+
+**Command**  
+pipeline_example_training.py \    
+input_dir/ipt_shuffle_All_CNN_data.txt \   
+input_store_class_report_dir  
+
+**Output data**  
 
 
 
