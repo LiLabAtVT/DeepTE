@@ -236,8 +236,8 @@ input_dir/ipt_shuffle_All_CNN_data.txt \
 input_store_class_report_dir  
 
 **Output data**  
-
-
+a. All_model.h5  
+b. All_class_report.txt  
 
 
 
