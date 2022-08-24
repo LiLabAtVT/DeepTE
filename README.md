@@ -225,7 +225,7 @@ a. TE domain file. (first column: orignial name; second column: domain informati
 
 
 # Examples (Training)
-For the users who want to train the models using their own data, please set the training_example_dir as the current directory, and do the training.  
+For the users who are interested in training models, please try the following training examples.  
 **Input data**  
 ipt_shuffle_All_CNN_data.txt (TEname,sequence_information)  
 input_store_class_report_dir (output directory)  
