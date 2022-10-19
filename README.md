@@ -5,6 +5,9 @@ DeepTE
 DeepTE is aimed to classify transposons with unknown classification *via* Convolutional Neural Network.
 
 # Updating
+**10/22/2022**  
+Update a common issue section.  
+
 **08/22/2022**  
 Add a training example dir that helps users to do the training based on their own datasets.  
 
@@ -74,6 +77,7 @@ Others:
 https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing  
 UNS model:  
 https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing
+
 
 # Usage
 ```
@@ -239,6 +243,12 @@ input_store_class_report_dir
 a. All_model.h5  
 b. All_class_report.txt  
 
+
+# Common issues
+We saw some users who failed to use the DeepTE because of package verisons.  
+Try python3.7 env and install tensor=2.2.0 + keras=2.3.1.  
+Please also see this link:
+https://stackoverflow.com/questions/62690377/tensorflow-compatibility-with-keras
 
 
 # Work flows
