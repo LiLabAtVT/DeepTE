@@ -54,7 +54,7 @@ sklearn (0.24.2) (It is used for the training example)
 **HMMER** v3.1b1
 
 **Model_dir**  
-Download the model dir from the cyVerse link  
+Download the model dir from the cyVerse link (Does not work currenlty)
 Plants:  
 https://de.cyverse.org/dl/d/89D2FE7A-41BA-4F64-80E2-B9C26D49E99F/Plants_model.tar.gz  
 Metazoans:  
@@ -68,15 +68,16 @@ https://de.cyverse.org/dl/d/3280369B-030A-4ADF-8B6F-EDD4EC21DC4A/UNS_model.tar.g
 
 Download the model dir from the google link  
 Plants:  
-https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing  
+[https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing](https://drive.google.com/file/d/1_PGBpt8q96dqCZcr1Me9xo48hLW3W7nx/view?usp=sharing)![image](https://github.com/user-attachments/assets/40548336-cb28-4237-9ee0-acf2154e9ea6)
 Metazoans:  
-https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing  
+[https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing](https://drive.google.com/file/d/1ShDfh3TbzDbyvQZO_ahSwpjffliVLyz3/view?usp=sharing)![image](https://github.com/user-attachments/assets/a97bee7a-b252-4f5d-8347-df9141cd252e)
 Fungi:  
-https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing  
+[https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing  ](https://drive.google.com/file/d/1HTNh3Uf7TpvsKgHTfSTgqhjZ7bUyjWWs/view?usp=sharing)![image](https://github.com/user-attachments/assets/89ba4b5a-1f80-4bb6-a38c-dceee1767fbd)
 Others:  
-https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing  
+[https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing ](https://drive.google.com/file/d/1iRxGAbjYDh-gIjOUkmaQVzXo6P2IijPL/view?usp=sharing)![image](https://github.com/user-attachments/assets/f1401d46-2589-4f82-8372-8708228b9209)
 UNS model:  
-https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing
+[https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing](https://drive.google.com/file/d/1ERHB3dtNFfD_CKn-TiLD2BiawsExuml_/view?usp=sharing)![image](https://github.com/user-attachments/assets/d29ddd0a-236e-4144-9bcb-bf0ac3c5d965)
+
 
 
 # Usage
