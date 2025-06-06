@@ -56,17 +56,17 @@ sklearn (0.24.2) (It is used for the training example)
 **Model_dir**\
 Download the model dir from the google link  
 Plants:  
-[https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing](https://drive.google.com/file/d/1_PGBpt8q96dqCZcr1Me9xo48hLW3W7nx/view?usp=sharing)
+[https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing](https://drive.google.com/file/d/1_PGBpt8q96dqCZcr1Me9xo48hLW3W7nx/view?usp=sharing)  
 Metazoans:  
-[https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing](https://drive.google.com/file/d/1ShDfh3TbzDbyvQZO_ahSwpjffliVLyz3/view?usp=sharing)
+[https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing](https://drive.google.com/file/d/1ShDfh3TbzDbyvQZO_ahSwpjffliVLyz3/view?usp=sharing)  
 Fungi:  
-[https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing](https://drive.google.com/file/d/1HTNh3Uf7TpvsKgHTfSTgqhjZ7bUyjWWs/view?usp=sharing)
+[https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing](https://drive.google.com/file/d/1HTNh3Uf7TpvsKgHTfSTgqhjZ7bUyjWWs/view?usp=sharing)  
 Others:  
-[https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing](https://drive.google.com/file/d/1iRxGAbjYDh-gIjOUkmaQVzXo6P2IijPL/view?usp=sharing)
+[https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing](https://drive.google.com/file/d/1iRxGAbjYDh-gIjOUkmaQVzXo6P2IijPL/view?usp=sharing)  
 UNS model:  
-[https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing](https://drive.google.com/file/d/1ERHB3dtNFfD_CKn-TiLD2BiawsExuml_/view?usp=sharing)\
+[https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing](https://drive.google.com/file/d/1ERHB3dtNFfD_CKn-TiLD2BiawsExuml_/view?usp=sharing)  
 
-Download the model dir from the cyVerse link (Does not work currenlty)\
+Download the model dir from the cyVerse link (Does not work currenlty)  
 Plants:  
 https://de.cyverse.org/dl/d/89D2FE7A-41BA-4F64-80E2-B9C26D49E99F/Plants_model.tar.gz  
 Metazoans:  
