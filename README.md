@@ -54,7 +54,7 @@ sklearn (0.24.2) (It is used for the training example)
 **HMMER** v3.1b1
 
 **Model_dir**\
-Download the model dir from the google link  
+Download the model dir from the google link  (Does not work currenlty)  
 Plants:  
 [https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing](https://drive.google.com/file/d/1_PGBpt8q96dqCZcr1Me9xo48hLW3W7nx/view?usp=sharing)  
 Metazoans:  
@@ -66,7 +66,7 @@ Others:
 UNS model:  
 [https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing](https://drive.google.com/file/d/1ERHB3dtNFfD_CKn-TiLD2BiawsExuml_/view?usp=sharing)  
 
-Download the model dir from the cyVerse link (Does not work currenlty)  
+Download the model dir from the cyVerse link
 Plants:  
 https://de.cyverse.org/dl/d/89D2FE7A-41BA-4F64-80E2-B9C26D49E99F/Plants_model.tar.gz  
 Metazoans:  
