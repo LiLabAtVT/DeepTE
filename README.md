@@ -54,8 +54,8 @@ sklearn (0.24.2) (It is used for the training example)
 **HMMER** v3.1b1
 
 **Model_dir**\
-Download the model from Amazon link
-Plants: 
+Download the model dir from Aliyun link  
+Plants:  
 http://47.109.88.13:8888/plants  
 Metazoans:  
 http://47.109.88.13:8888/metazoans  
