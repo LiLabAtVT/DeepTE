@@ -54,17 +54,18 @@ sklearn (0.24.2) (It is used for the training example)
 **HMMER** v3.1b1
 
 **Model_dir**\
-Download the model dir from the google link  (Does not work currenlty)  
-Plants:  
-[https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing](https://drive.google.com/file/d/1_PGBpt8q96dqCZcr1Me9xo48hLW3W7nx/view?usp=sharing)  
+Download the model from Amazon link
+Plants: 
+http://47.109.88.13:8888/plants  
 Metazoans:  
-[https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing](https://drive.google.com/file/d/1ShDfh3TbzDbyvQZO_ahSwpjffliVLyz3/view?usp=sharing)  
+http://47.109.88.13:8888/metazoans  
 Fungi:  
-[https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing](https://drive.google.com/file/d/1HTNh3Uf7TpvsKgHTfSTgqhjZ7bUyjWWs/view?usp=sharing)  
+http://47.109.88.13:8888/fungi  
 Others:  
-[https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing](https://drive.google.com/file/d/1iRxGAbjYDh-gIjOUkmaQVzXo6P2IijPL/view?usp=sharing)  
-UNS model:  
-[https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing](https://drive.google.com/file/d/1ERHB3dtNFfD_CKn-TiLD2BiawsExuml_/view?usp=sharing)  
+http://47.109.88.13:8888/others  
+UNS models:  
+http://47.109.88.13:8888/uns  
+
 
 Download the model dir from the cyVerse link
 Plants:  
@@ -77,6 +78,18 @@ Others:
 https://de.cyverse.org/dl/d/34CF8ACB-0B1F-4210-8359-366A70539F01/Others_model.tar.gz  
 UNS models:  
 https://de.cyverse.org/dl/d/3280369B-030A-4ADF-8B6F-EDD4EC21DC4A/UNS_model.tar.gz  
+
+Download the model dir from the google link  (Does not work currenlty)  
+Plants:  
+[https://drive.google.com/file/d/1voj86STKcQH8lAhvY6yl5E65nzaM6o0B/view?usp=sharing](https://drive.google.com/file/d/1_PGBpt8q96dqCZcr1Me9xo48hLW3W7nx/view?usp=sharing)  
+Metazoans:  
+[https://drive.google.com/file/d/1ExRwC3szJ4XMa3ikxM9Ccu31lY79rdw9/view?usp=sharing](https://drive.google.com/file/d/1ShDfh3TbzDbyvQZO_ahSwpjffliVLyz3/view?usp=sharing)  
+Fungi:  
+[https://drive.google.com/file/d/1uvnm99ypauIKtqCxoybdtT-mEMdoupip/view?usp=sharing](https://drive.google.com/file/d/1HTNh3Uf7TpvsKgHTfSTgqhjZ7bUyjWWs/view?usp=sharing)  
+Others:  
+[https://drive.google.com/file/d/1Q6HW1NhNs0a6Ykrw7jGEKKPWxawpWiuM/view?usp=sharing](https://drive.google.com/file/d/1iRxGAbjYDh-gIjOUkmaQVzXo6P2IijPL/view?usp=sharing)  
+UNS model:  
+[https://drive.google.com/file/d/1uXTEtNQtJc2DO-JpT0s4Kv1k2ogUjCLr/view?usp=sharing](https://drive.google.com/file/d/1ERHB3dtNFfD_CKn-TiLD2BiawsExuml_/view?usp=sharing)  
 
 
 # Usage
